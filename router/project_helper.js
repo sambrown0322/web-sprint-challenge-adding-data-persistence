@@ -41,6 +41,18 @@ function addTask(task) {
   return db("tasks").insert(task);
 }
 
+// Stretch
+function getProjectTasks(id) {
+  return db("tasks").where({ project_id: id });
+}
+
+function getProjectResources(id) {
+  return db("tasks")
+    .join("resources", "tasks.resource_id", "resources.id")
+    .select("resources.resource_name")
+    .where({ project_id: id });
+}
+
 module.exports = {
   getProjects,
   addProject,
@@ -48,4 +60,6 @@ module.exports = {
   addResource,
   getTasks,
   addTask,
+  getProjectTasks,
+  getProjectResources,
 };

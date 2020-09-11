@@ -15,6 +15,29 @@ router.get("/", (req, res) => {
     });
 });
 
+router.get("/:id/tasks", (req, res) => {
+  const id = req.params.id;
+  project
+    .getProjectTasks(id)
+    .then((rez) => {
+      res.status(200).json(rez);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+router.get("/:id/resources", (req, res) => {
+  const id = req.params.id;
+  project
+    .getProjectResources(id)
+    .then((rez) => {
+      res.status(200).json(rez);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
 router.get("/resources", (req, res) => {
   project
     .getResources()
