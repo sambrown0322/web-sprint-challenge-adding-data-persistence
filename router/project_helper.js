@@ -53,6 +53,13 @@ function getProjectResources(id) {
     .where({ project_id: id });
 }
 
+function getAllProjectsUsingResource(id) {
+  return db("tasks")
+    .join("projects", "tasks.project_id", "projects.id")
+    .select("projects.project_name")
+    .where({ resource_id: id });
+}
+
 module.exports = {
   getProjects,
   addProject,
@@ -62,4 +69,5 @@ module.exports = {
   addTask,
   getProjectTasks,
   getProjectResources,
+  getAllProjectsUsingResource,
 };

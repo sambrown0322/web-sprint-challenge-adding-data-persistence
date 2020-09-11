@@ -9,6 +9,12 @@ exports.seed = function (knex) {
           description: "Sit in front of computer",
           completed: true,
           project_id: 1,
+          resource_id: 1,
+        },
+        {
+          description: "Turn computer on",
+          completed: true,
+          project_id: 1,
           resource_id: 2,
         },
         {

@@ -37,6 +37,17 @@ router.get("/:id/resources", (req, res) => {
       console.log(err);
     });
 });
+router.get("/:id/projects", (req, res) => {
+  const id = req.params.id;
+  project
+    .getAllProjectsUsingResource(id)
+    .then((rez) => {
+      res.status(200).json(rez);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
 
 router.get("/resources", (req, res) => {
   project
